@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -68,11 +69,7 @@ const Login = (props) => {
   return (
     <div className="col-md-12">
       <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
+        <h3 className="text-center">Sign In</h3>
 
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group">
@@ -106,6 +103,11 @@ const Login = (props) => {
               )}
               <span>Login</span>
             </button>
+          </div>
+
+          <div className="form-group text-center">
+            <span>Don't have an account? </span>
+            <Link to="/register">Sign up here</Link>
           </div>
 
           {message && (

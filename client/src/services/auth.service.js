@@ -1,11 +1,14 @@
 import api from "./api";
 import TokenService from "./token.service";
 
-const register = (username, email, password) => {
+const register = (firstname, lastname, username, password, email, phone) => {
   return api.post("/auth/signup", {
+    firstname,
+    lastname,
     username,
+    password,
     email,
-    password
+    phone
   });
 };
 
