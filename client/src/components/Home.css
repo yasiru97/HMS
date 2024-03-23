@@ -1,0 +1,6 @@
+.home-page header{
+    background-image: linear-gradient(rgba(5,10,35,0.75), rgba(5,10,35,0.75)),url(../images/12.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+
+}

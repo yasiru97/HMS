@@ -13,6 +13,7 @@ import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 
+
 import EventBus from "./common/EventBus";
 
 const App = () => {
@@ -83,11 +84,17 @@ const App = () => {
               </li>
             )}
           </ul>
+          
           {currentUser ? (
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/profile"} className="nav-link">
                   Profile - {currentUser.username}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/hostel"} className="nav-link">
+                  Hostel
                 </Link>
               </li>
               <li className="nav-item">
@@ -113,7 +120,6 @@ const App = () => {
         </div>
       </nav>
 
-      <div className="container mt-3">
         <Switch>
           <Route exact path={["/", "/home"]} component={Home} />
           <Route exact path="/login" component={Login} />
@@ -123,8 +129,8 @@ const App = () => {
           <Route path="/mod" component={BoardModerator} />
           <Route path="/admin" component={BoardAdmin} />
         </Switch>
+
       </div>
-    </div>
   );
 };
 
