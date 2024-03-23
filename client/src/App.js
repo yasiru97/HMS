@@ -63,6 +63,16 @@ const App = () => {
                 Home
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"/home"} className="nav-link">
+                About
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/home"} className="nav-link">
+                Contact
+              </Link>
+            </li>
            
             {showModeratorBoard && (
               <li className="nav-item">
