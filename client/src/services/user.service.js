@@ -16,11 +16,16 @@ const getAdminBoard = () => {
   return api.get("/test/admin");
 };
 
+const getCurrentUserDetailsById = (id) => {
+  return api.get(`/test/getUserDetailsById/${id}`);
+}
+
 const UserService = {
   getPublicContent,
   getUserBoard,
   getModeratorBoard,
   getAdminBoard,
+  getCurrentUserDetailsById
 };
 
 export default UserService;

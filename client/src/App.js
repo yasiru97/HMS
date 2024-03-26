@@ -20,6 +20,7 @@ import EventBus from "./common/EventBus";
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
+  const [showUserBoard, setShowUserBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const App = () => {
       setCurrentUser(user);
       setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
       setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
+      setShowUserBoard(user.roles.includes("ROLE_USER"))
     }
 
     EventBus.on("logout", () => {
@@ -44,6 +46,7 @@ const App = () => {
     AuthService.logout();
     setShowModeratorBoard(false);
     setShowAdminBoard(false);
+    setShowUserBoard(false);
     setCurrentUser(undefined);
   };
 
@@ -63,7 +66,7 @@ const App = () => {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to={"/home"} className="nav-link">
                 About
               </Link>
@@ -72,28 +75,94 @@ const App = () => {
               <Link to={"/home"} className="nav-link">
                 Contact
               </Link>
-            </li>
+            </li> */}
            
             {showModeratorBoard && (
+              <>
               <li className="nav-item">
                 <Link to={"/mod"} className="nav-link">
-                  Moderator Board
+                  Notices
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to={"/mod"} className="nav-link">
+                  Hostal
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/mod"} className="nav-link">
+                  Students
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/mod"} className="nav-link">
+                  In/Out
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/mod"} className="nav-link">
+                  Inquiries
+                </Link>
+              </li>
+              </>
             )}
             {showAdminBoard && (
-              <li className="nav-item">
+              <>
+              <li className="nav-item dropdown">
                 <Link to={"/admin"} className="nav-link">
-                  Admin Board
+                  Users
                 </Link>
               </li>
+              <li className="nav-item dropdown">
+                <Link to={"/admin"} className="nav-link">
+                  Hostels
+                </Link>
+              </li>
+              <li className="nav-item dropdown">
+                <Link to={"/admin"} className="nav-link">
+                  Notices
+                </Link>
+              </li>
+              <li className="nav-item dropdown">
+                <Link to={"/admin"} className="nav-link">
+                  Inquiries
+                </Link>
+              </li>
+              <li className="nav-item dropdown">
+                <Link to={"/admin"} className="nav-link">
+                  Payments
+                </Link>
+              </li>
+              </>
             )}
-            {currentUser && (
+            {showUserBoard && (
+              <>
               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">
-                  User
+                  Notices
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to={"/user"} className="nav-link">
+                  Hostel
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/user"} className="nav-link">
+                  In/Out
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/user"} className="nav-link">
+                  Payments
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/user"} className="nav-link">
+                  Support
+                </Link>
+              </li>
+              </>
             )}
           </ul>
 
@@ -117,11 +186,6 @@ const App = () => {
                   Sign In
                 </Link>
               </li>
-              {/* <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
-                  Sign Up
-                </Link>
-              </li> */}
             </ul>
           )}
         </div>
